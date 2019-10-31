@@ -5,6 +5,3 @@
 
 # nodenv
 .node-version
-
-# .lock
-./se-client/*.lock
