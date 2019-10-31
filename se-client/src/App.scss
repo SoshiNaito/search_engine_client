@@ -1,6 +1,16 @@
 .App {
   text-align: center;
-  .pTag{
-    color: #282c34;
+  .aaa{
+    .pTag{
+      color: red;
+    }
+  }
+  .bbb{
+    .pTag{
+      color: blue;
+    }
+  }
+  .pTag {
+    color: green;
   }
 }
