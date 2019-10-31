@@ -3,9 +3,14 @@
 
 https://nodejs.org/ja/download/
 
-# サーバーを立てる
-```
+# 必要なものをinstallする
+```bash
 cd se-client
+npm install 
+```
+
+# サーバーを立てる
+```bash
 npm start
 ```
 以下にアクセス
