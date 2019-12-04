@@ -1,21 +1,30 @@
 import React from 'react';
 import './App.scss';
+import Main from './main';
+import FavoriteContent from './FavoriteContent';
+import Menu from './Menu';
+import aj from './testAj';
 
-function App() {
-    return (
-        <div className="App">
-            <div className="aaa">
-                <p className="pTag">
-                    aaa
-                </p>
+
+class App extends  React.Component{
+
+
+    render(){
+        return(
+            <div className="App">
+                
+            
+                <Menu/>
+                <Main/> 
+               <FavoriteContent />
+
+
+
+
             </div>
-            <div className="bbb">
-                <p className="pTag">
-                    bbb
-                </p>
-            </div>
-        </div>
-    );
+
+        )
+    }
 }
 
 export default App;
