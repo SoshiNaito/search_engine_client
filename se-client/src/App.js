@@ -6,6 +6,7 @@ import Menu from './components/Menu';
 import Form from './components/Form';
 import Button from './components/Button';
 import aj from './testAj';
+import SerchForm from './components/SerchForm';
 
 class App extends  React.Component{
     render(){
@@ -13,6 +14,7 @@ class App extends  React.Component{
             <div className="App">
             	<Form />
             	<Button />
+                <SerchForm />
             </div>
         )
     }

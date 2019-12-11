@@ -14,7 +14,7 @@ class Button extends React.Component {
                     </div>
                 </div>
             </div>
-        </form>
+      </form>
     );
   }
 }
