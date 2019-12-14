@@ -2,13 +2,12 @@
 
 
 import React from 'react';
-//import Logopic from './pic/logo.jpg';
 
 
+var getUrl ="http://localhost:8000/";
 
-var url ="http://localhost:8000/";
 
-class SerchForm extends  React.Component{
+class main extends  React.Component{
 
    
 
@@ -17,19 +16,19 @@ class SerchForm extends  React.Component{
         
     
         this.state={
-            isSubmitted:false,
-            text:'',
-            serchText:'',
+            isSubmitted:false,          //入力されたか 
+            text:'',                //入力文字の表示
+            serchText:'',           //変換ご
 
         };
     }   
 
     componentWillMount(){
-        this.fetchResponse();
+        this.GetfetchResponse();
     }
 
-    fetchResponse(){
-        fetch(url)
+    GetfetchResponse(){
+        fetch(getUrl+'conectTest')
         .then((response)=>{
             if(response.ok){
                 return response.text();
@@ -43,9 +42,10 @@ class SerchForm extends  React.Component{
     }
 
 
+
     sendText(){             //送信
         
-        fetch(url+this.state.serchText,{
+        fetch(getUrl+this.state.serchText,{
             method:'GET',
         })
         .catch((error)=>console.log(error));
@@ -78,15 +78,11 @@ class SerchForm extends  React.Component{
 
    
     render(){
-        const Logo=(
-            <div className="log">
-
-            </div>
-            )
+        
 
         let textForm;
 
-        if(this.state.isSubmitted&&this.state.text!=""){
+        if(this.state.isSubmitted&&this.state.text!==""){
             textForm=(
                 <p>送信完了</p>
             )
@@ -103,12 +99,13 @@ class SerchForm extends  React.Component{
                 )
         }
 
+        
 
 
         return(
             <div>
-                {Logo}
-                {textForm}
+                <p>GETFORM</p>
+               {textForm}
 
 
             </div>
@@ -117,4 +114,4 @@ class SerchForm extends  React.Component{
     }
 }
 
-export default SerchForm;
+export default main;
