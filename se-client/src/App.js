@@ -5,10 +5,8 @@ import FavoriteContent from './FavoriteContent';
 import Menu from './components/Menu';
 import Form from './components/Form';
 import Button from './components/Button';
-import aj from './testAj';
 import SerchForm from './components/SerchForm';
 import PostForm from './components/PostForm';
-import ReturnList from './components/ReturnList';
 
 
 class App extends  React.Component{
@@ -20,8 +18,6 @@ class App extends  React.Component{
                 <Menu/>
                 <SerchForm />
                 <PostForm/>
-
-                <ReturnList/>
             </div>
         )
     }

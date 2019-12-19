@@ -1,6 +1,6 @@
 //空白変換、GET同ファイルでの動作確認済み　
-
-
+import ReturnList from './ReturnList';
+import testJson from './test.json';
 import React from 'react';
 
 
@@ -18,7 +18,8 @@ class main extends  React.Component{
         this.state={
             isSubmitted:false,          //入力されたか 
             text:'',                //入力文字の表示
-            serchText:'',           //変換ご
+            serchText:'',           //変換後
+            res:[],
 
         };
     }   
@@ -27,29 +28,44 @@ class main extends  React.Component{
         this.GetfetchResponse();
     }
 
-    GetfetchResponse(){
-        fetch(getUrl+'conectTest')
-        .then((response)=>{
-            if(response.ok){
-                return response.text();
-            }else{
-                throw new Error();
-            }
-        })
-        .then((text)=>console.log(text))
-        .catch((error)=>console.log(error));
-            
+    GetfetchResponse(){                              //GET通信確認
+        fetch(getUrl+'conectTest',{mode:"no-cors"})
+        .then((response)=>response.text())
+        .then((text)=>{console.log("responseText:"+text)})
+        .catch((error)=>console.log(error))
     }
 
-
-
-    sendText(){             //送信
-        
-        fetch(getUrl+this.state.serchText,{
-            method:'GET',
+    sendText(){             //送信   
+        fetch(getUrl+this.state.serchText,{mode:"no-cors"})
+        // .then(
+        //     (response)=>response.json()        //Jsonファイルのレスポンスを受け取り
+        //     )
+        .then(
+            (response)=>response.text()        //Jsonファイルのレスポンスを受け取り
+            )          
+        .then((text)=>{                 //レスポンス受け取った後の処理
+            console.log("GetConectCommit"+text)
+            this.setState({
+             res:testJson.testData
+            })    
+            console.log(this.state.res)
         })
-        .catch((error)=>console.log(error));
+        // .then((jsonData)=>{                         //Jsonファイルに対する処理
+        //     console.log("取得")
+        //     this.setState({
+        //         res:[1]
+        //     })
+        // })
+        .catch((error)=>console.log(error))
 
+    }
+
+    ResponsePreview(){
+        console.log(this.state.res);
+        return(
+                <ReturnList
+                PreviewList={this.state.res}/>
+                ) 
     }
 
 
@@ -84,7 +100,7 @@ class main extends  React.Component{
 
         if(this.state.isSubmitted&&this.state.text!==""){
             textForm=(
-                <p>送信完了</p>
+                this.ResponsePreview()    
             )
             
             
