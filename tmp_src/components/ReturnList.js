@@ -7,29 +7,22 @@ export default class ReturnList extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({
-            Datalist:[testJson.testData]        //JSONデータ
+            Datalist: [testJson.testData]        //JSONデータ
         });
     }
 
-    render(){
+    render() {
         console.log(this.state.Datalist);
-
-
-        return(
+        return (
             <div>
-
-                 <ul>
-
-                    {this.state.Datalist[0].map((Dlist)=>{      //配列を一つずつ取り出しDlistに格納
-                        return(
-                           
+                <ul>
+                    {this.state.Datalist[0].map((Dlist) => {      //配列を一つずつ取り出しDlistに格納
+                        return (
                             <ReturnItem         //ReturnItemにDitemとしてDlistを渡す
-                            Ditem={Dlist}
-                         
-                            /> 
+                                Ditem={Dlist}
+                            />
                         )
-                        
-                    })                
+                    })
                     }
                 </ul>
 

@@ -1,0 +1,2 @@
+curl -XPOST http://localhost:3000 -H "Content-Type:application/json" -d "{\"title\":\"日本工学院八王子専門学校\",\"url\":\"https://www.neec.ac.jp/hachioji/\"}"
+

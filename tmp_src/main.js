@@ -1,14 +1,11 @@
-//空白変換、GET同ファイルでの動作確認済み　
-
-
 import React from 'react';
-//import Logopic from './pic/logo.jpg';
-
+import Logopic from './pic/logo.jpg';
+import searchIcon from './pic/systemsearch_104123.png';
 
 
 var url ="http://localhost:8000/";
 
-class SerchForm extends  React.Component{
+class main extends  React.Component{
 
    
 
@@ -20,7 +17,6 @@ class SerchForm extends  React.Component{
             isSubmitted:false,
             text:'',
             serchText:'',
-
         };
     }   
 
@@ -80,7 +76,7 @@ class SerchForm extends  React.Component{
     render(){
         const Logo=(
             <div className="log">
-
+            <img src={Logopic} alt="logo" />
             </div>
             )
 
@@ -101,6 +97,8 @@ class SerchForm extends  React.Component{
                     <input type="submit" />
                     </form>
                 )
+             
+
         }
 
 
@@ -117,4 +115,4 @@ class SerchForm extends  React.Component{
     }
 }
 
-export default SerchForm;
+export default main;
