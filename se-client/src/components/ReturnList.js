@@ -3,7 +3,6 @@ import ReturnItem from './ReturnItem';
 
 export default class ReturnList extends React.Component {
 
-
     // componentWillMount(){                        //やっちゃいいかな。。なくてもいい現段階では
     //     console.log(this.props.PreviewList)
     //     this.setState({
@@ -11,7 +10,6 @@ export default class ReturnList extends React.Component {
     //     })
     //     console.log(this.state.Datalist);
     // }
-
 
     render(){
         
@@ -27,10 +25,7 @@ export default class ReturnList extends React.Component {
                     })                
                     }
                 </ul>
-
             </div>
         );
     }
-
 }
-

@@ -3,24 +3,18 @@ import ReturnList from './ReturnList';
 import testJson from './test.json';
 import React from 'react';
 
+const getUrl ="http://localhost:8000/";
 
-var getUrl ="http://localhost:8000/";
-
-
-class main extends  React.Component{
-
-   
-
+export default class SerchForm extends  React.Component{
+  
     constructor(props){
-        super(props);
-        
+        super(props);    
     
         this.state={
             isSubmitted:false,          //入力されたか 
             text:'',                //入力文字の表示
             serchText:'',           //変換後
             res:[],                 //レスポンス
-
         };
     }   
 
@@ -37,9 +31,6 @@ class main extends  React.Component{
 
     sendText(){             //送信   
         fetch(getUrl+this.state.serchText,{mode:"no-cors"})
-        // .then(
-        //     (response)=>response.json()        //Jsonファイルのレスポンスを受け取り
-        //     )
         .then(
             (response)=>response.text()        //Jsonファイルのレスポンスを受け取り
             )          
@@ -50,6 +41,9 @@ class main extends  React.Component{
             })    
             console.log(this.state.res)
         })
+        // .then(
+        //     (response)=>response.json()        //Jsonファイルのレスポンスを受け取り
+        //     )
         // .then((jsonData)=>{                         //Jsonファイルに対する処理
         //     console.log("取得")
         //     this.setState({
@@ -57,24 +51,20 @@ class main extends  React.Component{
         //     })
         // })
         .catch((error)=>console.log(error))
-
     }
 
     ResponsePreview(){              //レスポンスの表示
         console.log(this.state.res); 
         return(
-                <ReturnList
-                PreviewList={this.state.res}/>      //ReturnListにstateのresをPreviewListとして配列で渡す
-                ) 
+            <ReturnList
+            PreviewList={this.state.res}/>      //ReturnListにstateのresをPreviewListとして配列で渡す
+            ) 
     }
 
-
-    handleSubmit(){                 //ボタン押下
-        
+    handleSubmit(){                 //ボタン押下    
         this.sendText();            //サーバーに送る
         this.setState({isSubmitted:true});      //押された
     }
-
 
     handleTextChange(event){        //入力の表示,空白の変換
 
@@ -88,14 +78,10 @@ class main extends  React.Component{
             text:inputValue,
             serchText:nones,
         })
-        
-
     }
 
-   
     render(){
-        
-
+    
         let textForm;
 
         if(this.state.isSubmitted&&this.state.text!==""){       //ボタン押下かつ文字が入ってる
@@ -103,31 +89,22 @@ class main extends  React.Component{
                 this.ResponsePreview()    
             )
             
-            
-            }else{
-                textForm=(
-                    <form onSubmit={()=>{this.handleSubmit()}}>
-                    <input id="fakebox-input" autocomplete="off" tabindex="-1"
-                    type="text" aria-hidden="true" value={this.state.text}
-                    onChange={(event)=>{this.handleTextChange(event)}}/>
-                    <input type="submit" />
-                    </form>
-                )
+        }else{
+            textForm=(
+                <form onSubmit={()=>{this.handleSubmit()}}>
+                <input id="fakebox-input" autocomplete="off" tabindex="-1"
+                type="text" aria-hidden="true" value={this.state.text}
+                onChange={(event)=>{this.handleTextChange(event)}}/>
+                <input type="submit" />
+                </form>
+            )
         }
-
-        
-
 
         return(
             <div>
                 <p>GETFORM</p>
-               {textForm}
-
-
-            </div>
-
+                {textForm}
+             </div>
         );
     }
 }
-
-export default main;
