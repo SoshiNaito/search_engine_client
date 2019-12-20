@@ -12,8 +12,8 @@ class App extends  React.Component{
     render(){
         return(
             <div className="App">
-                <SerchForm />
-                <PostForm />
+                <PostForm/>
+            	<Form />
             </div>
         )
     }
