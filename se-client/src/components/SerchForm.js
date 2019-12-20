@@ -19,7 +19,7 @@ class main extends  React.Component{
             isSubmitted:false,          //入力されたか 
             text:'',                //入力文字の表示
             serchText:'',           //変換後
-            res:[],
+            res:[],                 //レスポンス
 
         };
     }   
@@ -46,7 +46,7 @@ class main extends  React.Component{
         .then((text)=>{                 //レスポンス受け取った後の処理
             console.log("GetConectCommit"+text)
             this.setState({
-             res:testJson.testData
+             res:testJson.testData          //テスト用データを格納
             })    
             console.log(this.state.res)
         })
@@ -60,19 +60,19 @@ class main extends  React.Component{
 
     }
 
-    ResponsePreview(){
-        console.log(this.state.res);
+    ResponsePreview(){              //レスポンスの表示
+        console.log(this.state.res); 
         return(
                 <ReturnList
-                PreviewList={this.state.res}/>
+                PreviewList={this.state.res}/>      //ReturnListにstateのresをPreviewListとして配列で渡す
                 ) 
     }
 
 
     handleSubmit(){                 //ボタン押下
         
-        this.sendText();
-        this.setState({isSubmitted:true});
+        this.sendText();            //サーバーに送る
+        this.setState({isSubmitted:true});      //押された
     }
 
 
@@ -98,7 +98,7 @@ class main extends  React.Component{
 
         let textForm;
 
-        if(this.state.isSubmitted&&this.state.text!==""){
+        if(this.state.isSubmitted&&this.state.text!==""){       //ボタン押下かつ文字が入ってる
             textForm=(
                 this.ResponsePreview()    
             )
