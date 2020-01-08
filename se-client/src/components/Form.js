@@ -97,6 +97,7 @@ export default class Form extends React.Component {
                         type="text" name="" placeholder="Type to search"
                         value={this.state.text} onChange={(event)=>{this.handleTextChange(event)}}
                     />
+                    
                     <a class="search-btn" href="#">
                         <i class="fab fa-facebook"></i>
                     </a>
