@@ -12,7 +12,9 @@ class App extends  React.Component{
     render(){
         return(
             <div className="App">
-                <Form />
+                <SerchForm/>
+                <PostForm/>
+            	<Form />
             </div>
         )
     }

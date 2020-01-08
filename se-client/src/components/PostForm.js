@@ -53,10 +53,10 @@ export default class PostForm extends React.Component{
         testArray.value=inputValue;
         
 
-        this.setState({
-            text:inputValue,        //入力の表示
-            PostData:JSON.stringify(testArray)      //testArrayをJSONに変換しPostDataとして保持
-        })
+        // this.setState({
+        //     text:inputValue,        //入力の表示
+        //     PostData:JSON.stringify(testArray)      //testArrayをJSONに変換しPostDataとして保持
+        // })
 
 
 
