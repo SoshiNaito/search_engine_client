@@ -18,9 +18,9 @@ export default class ReturnList extends React.Component {
                  <ul>
                     {this.props.PreviewList.map((Dlist)=>{      //渡されたのをそのままmap
                         return(                                 //配列を一つずつ取り出しReturnIitemにDItemとして渡す
-                            <ReturnItem
-                            Ditem={Dlist}
-                            /> 
+                            <li className='Return-item'>
+                            <a href={Dlist.url}  className='Returnlist'>{Dlist.title}</a>        
+                            </li>
                         )
                     })                
                     }

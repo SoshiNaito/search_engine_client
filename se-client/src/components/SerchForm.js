@@ -1,31 +1,28 @@
 //空白変換、GET同ファイルでの動作確認済み　
-import ReturnList from './ReturnList';
-import testJson from './test.json';
-import React from 'react';
-
-
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 var getUrl ="http://localhost:8000/";
+    
 
 
-class main extends  React.Component{
-
-   
+class SerchForm extends  Component{
 
     constructor(props){
         super(props);
-        
-    
+        this.handleSubmit=this.handleSubmit.bind(this)
+
         this.state={
-            isSubmitted:false,          //入力されたか 
             text:'',                //入力文字の表示
             serchText:'',           //変換後
-            res:[],
-            loading:false
         };
-    }   
+        this.handleTextChange=this.handleTextChange.bind(this)
+        this.handleSubmit=this.handleSubmit.bind(this)   
+    
+    }
 
     componentWillMount(){
         this.GetfetchResponse();
+
     }
 
     GetfetchResponse(){                              //GET通信確認
@@ -35,50 +32,14 @@ class main extends  React.Component{
         .catch((error)=>console.log(error))
     }
 
-    sendText(){             //送信   
-        fetch(getUrl+this.state.serchText,{mode:"no-cors"})
-        .then((response)=>response.text())        //Jsonファイルのレスポンスを受け取り       
-        .then((text)=>{                 //レスポンス受け取った後の処理
-            console.log("GetConectCommit"+text)
-            this.setState({
-             res:testJson          //テスト用データを格納
-            })    
-            console.log(this.state.res)
-        })
-        .then((response)=>response.json())        //Jsonファイルのレスポンスを受け取り
-        .then((responseJson) => {
-            console.log("Commit")
-            this.setState({
-              res: responseJson,
-              loading:true
-            });
-            console.log("Commit")
-        
-        })
-    
-        // .then((jsonData)=>{                         //Jsonファイルに対する処理
-        //     console.log("取得")
-        //     this.setState({
-        //         res:[1]
-        //     })
-        // })
-        .catch((error)=>console.log(error))
-
-    }
-
-    ResponsePreview(){
-        console.log(this.state.res);
-        return(
-            <ReturnList
-                PreviewList={this.state.res}/>
-            ) 
-    }
-
-
     handleSubmit(){                 //ボタン押下
-        
-        this.sendText();
-        this.setState({isSubmitted:true});
+
+        let sendText='/'+this.state.serchText;
+        this.props.history.push({
+          pathname: sendText,
+          state: { text: this.state.serchText }
+      });
+    
     }
 
 
@@ -94,41 +55,25 @@ class main extends  React.Component{
             text:inputValue,
             serchText:nones,
         })
-        
-
     }
 
    
     render(){
+        const FormStyle=(
+            <form onSubmit={()=>{this.handleSubmit()}}>
+            <input id="fakebox-input" autocomplete="off" tabindex="-1"
+            type="text" aria-hidden="true" value={this.state.text}
+            onChange={(event)=>{this.handleTextChange(event)}}/>
+            <input type="submit" />
+            </form>
+        )
         
-
-        let textForm;
-
-        if(this.state.isSubmitted&&this.state.text!==""){
-            textForm=(
-                this.ResponsePreview()    
-            )
-            
-            
-            }else{
-                textForm=(
-                    <form onSubmit={()=>{this.handleSubmit()}}>
-                    <input id="fakebox-input" autocomplete="off" tabindex="-1"
-                    type="text" aria-hidden="true" value={this.state.text}
-                    onChange={(event)=>{this.handleTextChange(event)}}/>
-                    <input type="submit" />
-                    </form>
-                )
-        }
-
-        
-
+        let textForm=FormStyle;
 
         return(
             <div>
                 <p>GETFORM</p>
                {textForm}
-
 
             </div>
 
@@ -136,4 +81,4 @@ class main extends  React.Component{
     }
 }
 
-export default main;
+export default withRouter(SerchForm);
