@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import testJson from './test.json';
 
 var getUrl ="http://localhost:8000/";
 
