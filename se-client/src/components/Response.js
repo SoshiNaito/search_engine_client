@@ -18,21 +18,13 @@ export default class Response extends Component {
 
 
     sendText(){             //送信   
-        fetch(getUrl+this.props.location.state.text,{mode:"no-cors"})
-        .then((response)=>response.text())        //Jsonファイルのレスポンスを受け取り       
-        .then((text)=>{                 //レスポンス受け取った後の処理
-            console.log("testjsonCommit"+text)
-            this.setState({
-             res:testJson          //テスト用データを格納
-            })    
-            console.log(this.state.res)
-        })
+        fetch(getUrl+this.props.location.state.text)
 
         .then((response)=>response.json())        //Jsonファイルのレスポンスを受け取り
         .then((responseJson) => {
             console.log("Commit")
             this.setState({
-              res: responseJson,
+              res: responseJson.pages,
               loading:true
             });
             console.log("Commit")
@@ -49,7 +41,8 @@ export default class Response extends Component {
             {this.state.res.map((Dlist)=>{ 
                 return(                                
                     <li className='Return-item'>
-                    <a href={Dlist.url}  className='Returnlist'>{Dlist.title}</a>        
+                    <a href={Dlist.url}  className='Returnlist'>{Dlist.title}</a>
+                    <p>{Dlist.degree}</p>
                     </li>
                 )
             })                
