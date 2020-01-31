@@ -10,7 +10,7 @@ const propTypes = {
 
 const defaultProps = {
     initialPage: 1,
-    pageSize: 10
+    pageSize: 7
 }
 
 class Pagination extends React.Component {
@@ -115,28 +115,28 @@ class Pagination extends React.Component {
         let returnPage=(
             <ul className="pagination">
             <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-                <button onClick={() => this.setPage(1)}>First</button>
+                <button className="page" onClick={() => this.setPage(1)}>First</button>
             </li>
             <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-                <button onClick={() => this.setPage(pager.currentPage - 1)}>Previous</button>
+                <button className="page" onClick={() => this.setPage(pager.currentPage - 1)}>Previous</button>
             </li>
             {pager.pages.map((page, index) =>
                 <li key={index} className={pager.currentPage === page ? 'active' : ''}>
-                    <button onClick={() => this.setPage(page)}>{page}</button>
+                    <button className="page" onClick={() => this.setPage(page)}>{page}</button>
                 </li>
             )}
             <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                <button onClick={() => this.setPage(pager.currentPage + 1)}>Next</button>
+                <button className="page" onClick={() => this.setPage(pager.currentPage + 1)}>Next</button>
             </li>
             <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                <button onClick={() => this.setPage(pager.totalPages)}>Last</button>
+                <button className="page" onClick={() => this.setPage(pager.totalPages)}>Last</button>
             </li>
         </ul>
 
         )
 
         return (
-            <div>
+            <div className="page">
                 {returnPage}
             </div>
         );
