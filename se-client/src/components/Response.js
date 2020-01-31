@@ -1,64 +1,80 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Pagination from './Pagination';
 import testJson from './test.json';
+import { Route,withRouter } from 'react-router-dom';
+import SerchForm from './SerchForm';
+const getUrl ="http://localhost:8000/";
 
-var getUrl ="http://localhost:8000/";
 
-export default class Response extends Component {
-
+class Response extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            res:[],
+            exampleItems: [],
+            pageOfItems: []
         }
-    };
+        this.onChangePage = this.onChangePage.bind(this);
+        this.ReturnList = this.ReturnList.bind(this);
+    }
 
     componentWillMount(){
         this.sendText();
     }
 
+    componentDidMount(){
+        this.sendText();
+    }
 
     sendText(){             //送信   
-        fetch(getUrl+this.props.location.state.text)
-
-        .then((response)=>response.json())        //Jsonファイルのレスポンスを受け取り
-        .then((responseJson) => {
-            console.log("Commit")
+        fetch(getUrl+this.props.location.state.text,{mode:"no-cors"})
+        .then((response)=>response.text())        //Jsonファイルのレスポンスを受け取り       
+        .then((text)=>{                 //レスポンス受け取った後の処理
+            console.log("testjsonCommit"+text)
             this.setState({
-              res: responseJson.pages,
-              loading:true
-            });
-            console.log("Commit")
-        
+                exampleItems:testJson          //テスト用データを格納
+            })
+
+            console.log(this.state.pageOfItems)
         })
-    
-        .catch((error)=>console.log(error))
     }
 
-    ResponsePreview(){
-        console.log(this.state.res);
+    onChangePage(pageOfItems) {
+        // update state with new page of items
+        this.setState({ pageOfItems: pageOfItems });
+    }
+
+    ReturnList(){
+        console.log(this.state.pageOfItems)
+
+        return(            
+            <div>
+                {this.state.pageOfItems.map(item =>(
+
+                <li className='Return-item'>
+                    <a href={item.url}  className='Returnlist'>{item.title}</a>
+                </li>
+                ))}
+            </div>
+        )       
+        
+    }
+
+    render(){
+        // this.sendText();
+ 
+
+
         return(
-            <ul>
-            {this.state.res.map((Dlist)=>{ 
-                return(                                
-                    <li className='Return-item'>
-                    <a href={Dlist.url}  className='Returnlist'>{Dlist.title}</a>
-                    <p>{Dlist.degree}</p>
-                    </li>
-                )
-            })                
-            }
-            </ul>
-        ) 
+            <div>
+               
+                <Route exact path='/:id' render={this.ReturnList}/>
+                <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+                
+            </div>
+        )
     }
-
-
-  render(){
-      let ResponseList=this.ResponsePreview();
-      return(
-          <div>
-          {ResponseList}
-          </div>
-      )
-  }  
 }
+
+export default withRouter(Response)
+
 
