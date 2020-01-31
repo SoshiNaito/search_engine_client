@@ -12,61 +12,66 @@
 /*************************
 メディアクエリ設定 0〜1280
 *************************/
-@media screen and (min-width: 0px) and (max-width: 1280px) {
-  .main {
-    margin: 0 auto;
-    padding: 0 0 0 30px;
-    width: 1024px;
-    display: inline-block;
-  }
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+
 }
 
-/************************
-メディアクエリ設定 0〜768
-************************/
-@media screen and (min-width: 0px) and (max-width: 768px) {
-  .main {
-    margin: 0 auto;
-    padding: 0;
-    width: 95%;
-    display: inline-block;
-  }
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
 }
 
-/************************
-メディアクエリ設定 0〜640
-************************/
-@media screen and (min-width: 0px) and (max-width: 640px) {
-  .main {
-    margin: 0 auto;
-    padding: 0;
-    width: 94%;
-    display: inline-block;
-  }
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+/* Styles */
 }
 
-/************************
-メディアクエリ設定 0〜480
-************************/
-@media screen and (min-width: 0px) and (max-width: 480px) {
-  .main {
-    margin: 0 auto;
-    padding: 0;
-    width: 93%;
-    display: inline-block;
-  }
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
 }
 
-/************************
-メディアクエリ設定 0〜320
-************************/
-@media screen and (min-width: 0px) and (max-width: 320px) {
-  .main {
-    margin: 0 auto;
-    padding: 0;
-    width: 92%;
-    display: inline-block;
-  }
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
 }
 
 body {
@@ -75,46 +80,50 @@ body {
   display: flex;
 }
 
-.pic {
-  display:inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 35%;
-}
+
 .search-box {
-  top: 50%;
-  left: 50%;
-  width: 80%;
+  top: 60%;
+  left: 30%;
+  transform: translate(0%, 0%);
   background: #2f3640;
-  height: 35px;
-  border-radius: 40px;
-  padding: 20px;
-  margin-bottom: 40px;
+  height: 40px;
+  border-radius: 150px;
+  padding: 35px;
+  bottom: 5px;
 }
 
-.search-box:hover >.textBox> .search-txt {
-  width: 95%;
+
+.search-box:hover >.search-txt {
+  width: 450px;
   padding: 0 6px;
-  border-radius: 35px
 }
 
+.search-box:hover > .search-btn {
+  background: black;
+}
 .search-btn {
-  color: #FFF;
-  float: right;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #2f3640;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.search-btn:hover .icon{
   color: #FFF;
   float: right;
   width: 40px;
   height: 40px;
+  border-radius: 100%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:0.4s;
+  cursor: pointer;
+}
+
+.search-btn > i {
+  font-size: 30px;
+ }
+
+ .search-btn:hover.icon{
+  color: #FFF;
+  float: right;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: #2f3640;
   display: flex;
@@ -122,7 +131,7 @@ body {
   align-items: center;
 }
 
-.search-txt {
+.search-txt{
   border: none;
   background-color: #000;
   outline: none;
@@ -130,19 +139,20 @@ body {
   padding: 0;
   color: white;
   font-size: 16px;
-  transition: 0.4s;
+  transition:0.4s;
   line-height: 40px;
-  width: 0;
+  width: 0px;
 }
 
+
+
 .wholeapp {
-  display: flex;
   flex-wrap: wrap;
-  top: 50%;
-  width: 100%;
+  top: 30%;
+  width: 30%;
   right: 10px;
   bottom: 10px;
-  text-align: center;
+  text-align:center;
 
 }
 .btn--blue {
@@ -156,6 +166,7 @@ body {
   color: #3b5998;
   overflow: hidden;
   position: relative;
+  bottom: -45%;
 }
 
 .btn--blue i {
@@ -197,6 +208,7 @@ body {
   color: #00BFFF;
   overflow: hidden;
   position: relative;
+  bottom: -45%;
 }
 
 .btn--lightblue i {
@@ -227,7 +239,7 @@ body {
   left: -10%;
 }
 
-.btn--yellow {
+.btn--purple {
   display: inline-block;
   width: 90px;
   height: 90px;
@@ -235,34 +247,35 @@ body {
   margin: 10px;
   border-radius: 30%;
   box-shadow: 0 5px 15px -5px #00000070;
-  color: #f9ca24;
+  color: #4A154B;
   overflow: hidden;
   position: relative;
+  bottom: -45%;
 
-  .btn--yellow i {
+  .btn--purple i {
     line-height: 90px;
     font-size: 26px;
     transition: 0.2s linear;
   }
 }
 
-.btn--yellow:hover i {
+.btn--purple:hover i {
   transform: scale(1.1);
   color: #f1f1f1;
 }
 
-.btn--yellow::before {
+.btn--purple::before {
   content: "";
   position: absolute;
   width: 120%;
   height: 120%;
-  background: #f9ca24;
+  background: #4A154B;
   transform: rotate(45deg);
   left: -110%;
   top: 90%;
 }
 
-.btn--yellow:hover::before {
+.btn--purple:hover::before {
   animation: aaa 0.7s 1;
   top: -10%;
   left: -10%;
@@ -279,6 +292,7 @@ body {
   color: #FF0000;
   overflow: hidden;
   position: relative;
+  bottom: -45%;
 
   .btn--red i {
     line-height: 90px;
@@ -318,7 +332,7 @@ body {
 }
 
 .fab fa-slack {
-  background: #f9ca24;
+  background: #4A154B;
 }
 
 .fab fa-youtube {

@@ -1,0 +1,77 @@
+body{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  
+}
+
+div.formtest{
+  padding: 30px;
+}
+
+div.result{
+  background-color: #576375;
+  padding: 30px;
+}
+
+li.Return-item{
+  margin: auto;
+  margin-top: 30px;
+  display: block;
+  border-radius: 50px;
+  background-color:#576375;
+  padding: 30px;
+  width: 800px;
+  height: 15px;
+  position: relative;
+  top: 0px;
+  right: 30px;
+  bottom: 20px;
+  
+  
+}
+
+p {
+  margin-top: 10px;
+  text-align: center;
+  font-size: large;
+}
+
+a.Returnlist {
+  text-decoration: none;
+  color: white;
+  font-size: 150%;
+  font-family: "游ゴシック", "Yu Gothic";
+}
+
+div.pages{
+  text-align: center;
+  position: relative;
+}
+
+ul.pagination {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 0px;
+  right: 45px;
+  bottom: 45px;
+  
+}
+
+button.page{
+  display: inline-block;
+  margin:5px;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(88, 88, 88);
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 5px #999;
+  
+}
