@@ -65,7 +65,7 @@ class Response extends React.Component {
 
 
         return(
-            <div>
+            <div className="Res">
                
                 <Route exact path='/:id' render={this.ReturnList}/>
                 <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
