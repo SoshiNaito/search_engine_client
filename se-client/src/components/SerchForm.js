@@ -48,16 +48,16 @@ class SerchForm extends React.Component{
 
         const appViw=(
             <div class="wholeapp">
-            <a class="btn--blue" href="https://www.facebook.com/">
+            <a class="btn--blue" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/">
             <i class="fab fa-facebook"></i>
                 </a>
-                <a class="btn--lightblue" href="https://twitter.com/">
+                <a class="btn--lightblue" target="_blank" rel="noopener noreferrer" href="https://twitter.com/">
                     <i class="fab fa-twitter"></i>
                 </a>
-            <a class="btn--purple" href="https://slack.com/">
+            <a class="btn--purple" target="_blank" rel="noopener noreferrer" href="https://slack.com/">
                     <i class="fab fa-slack"></i>
                 </a>
-                <a class="btn--red" href="https://www.youtube.com/">
+                <a class="btn--red" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/">
                     <i class="fab fa-youtube"></i>
              </a>
             </div>
