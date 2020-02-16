@@ -21,14 +21,14 @@ class Pagination extends React.Component {
 
     componentWillMount() {
         // set page if items array isn't empty
-        if (this.props.items && this.props.items.length) {
+        if (this.props.items.pages && this.props.items.pages.length) {
             this.setPage(this.props.initialPage);
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
         // reset page if items array has changed
-        if (this.props.items !== prevProps.items) {
+        if (this.props.items.pages !== prevProps.items.pages) {
             this.setPage(this.props.initialPage);
         }
     }
@@ -42,10 +42,10 @@ class Pagination extends React.Component {
         }
 
         // get new pager object for specified page
-        pager = this.getPager(items.length, page, pageSize);
+        pager = this.getPager(items.pages.length, page, pageSize);
 
         // get new page of items from items array
-        var pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1);
+        var pageOfItems = items.pages.slice(pager.startIndex, pager.endIndex + 1);
 
         // update state
         this.setState({ pager: pager });
